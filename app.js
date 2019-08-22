@@ -36,7 +36,7 @@ app.use('/api/admin', userRouter);
 app.use('/api/auth', loginRouter);
 app.use('/api/staff', staffRouter);
 
-app.use(sendEmail);
+// app.use(sendEmail);
 
 require('./prod')(app);
 
