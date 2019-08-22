@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
 	root: {},
 	logo: {
 		marginTop: theme.spacing(1),
-		height: '52px',
-		width: '120px'
+		height: '60px',
+		width: '130px'
 	},
 	button: {
 		margin: theme.spacing(1),
@@ -75,11 +75,10 @@ const useStyles = makeStyles((theme) => ({
 
 	username: {
 		fontWeight: 'light',
-		fontSize: '20px',
+		fontSize: '25px',
 		float: 'left',
 		marginLeft: '15px',
-		marginTop: '32px',
-		color: ''
+		marginTop: '30px'
 	}
 }));
 

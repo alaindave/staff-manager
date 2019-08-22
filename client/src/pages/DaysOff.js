@@ -58,7 +58,8 @@ class Daysoff extends Component {
 
 		this.setState({ loaderSubmit: true });
 
-		const adminEmail = window.localStorage.getItem('email');
+		const adminEmail = window.localStorage.getItem('adminEmail');
+		const adminName = window.localStorage.getItem('adminName');
 
 		const data = {
 			startDate: this.state.startDate,
@@ -66,7 +67,8 @@ class Daysoff extends Component {
 			numberDays: this.state.numberDays,
 			firstName: this.props.location.state.firstName,
 			lastName: this.props.location.state.lastName,
-			adminEmail
+			adminEmail,
+			adminName
 		};
 
 		await axios

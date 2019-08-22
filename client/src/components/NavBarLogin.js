@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
 	root: {},
 	logo: {
 		marginTop: theme.spacing(1),
-		height: '42px'
+		height: '60px',
+		width: '130px'
 	},
 	button: {
 		margin: theme.spacing(1),
@@ -65,10 +66,7 @@ function NavBarLogin(props) {
 				<Toolbar variant="regular" className={classes.toolbar}>
 					<div style={{ flex: '1' }}>
 						<img src={logo} className={classes.logo} alt="logo" />
-						<span className={classes.title}>Staff eManager</span>
 					</div>
-
-					<span className={classes.admin}>Admin</span>
 				</Toolbar>
 			</AppBar>
 		</div>

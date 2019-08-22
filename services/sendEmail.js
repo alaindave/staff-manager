@@ -1,7 +1,7 @@
 const nodeMailer = require('nodemailer');
 
 sendEmail = (req, res) => {
-	const { firstName, lastName, startDate, endDate, adminEmail } = req.body;
+	const { firstName, lastName, startDate, endDate, adminEmail, adminName } = req.body;
 
 	const transporter = nodeMailer.createTransport({
 		host: 'smtp.gmail.com',
@@ -15,12 +15,15 @@ sendEmail = (req, res) => {
 	const mailOptions = {
 		from: process.env.email,
 		to: `${adminEmail}`,
-		subject: `Congé de ${firstName} ${lastName} `,
-		text: `Bonjour,
+		subject: `Days off request of ${firstName} ${lastName} `,
+		text: ` Hello ${adminName},
         
-        ${firstName} ${lastName} sera en congé du ${startDate} au ${endDate}.
-        
-        Votre gestionnaire electronique`
+    ${firstName} ${lastName} will be off from ${startDate} to ${endDate}.
+		
+Thanks
+
+ Your electronic manager
+        `
 	};
 	transporter.sendMail(mailOptions, (error, info) => {
 		if (error) {

@@ -28,19 +28,23 @@ const staffPageStyle = (theme) => ({
 	button1: {
 		marginTop: theme.spacing(30),
 		marginBottom: theme.spacing(1),
-		marginLeft: theme.spacing(3),
-		fontSize: '35px',
-		padding: '60px',
-		backgroundColor: '#3a7ea1'
+		fontSize: '25px',
+		padding: '50px',
+		backgroundColor: '#3a7ea1',
+		borderRadius: '10px',
+		position: 'relative',
+		left: '200px'
 	},
 
 	button2: {
 		marginTop: theme.spacing(30),
 		marginBottom: theme.spacing(1),
-		marginLeft: theme.spacing(20),
-		fontSize: '35px',
-		padding: '60px',
-		backgroundColor: '#3a7ea1'
+		fontSize: '25px',
+		padding: '50px',
+		backgroundColor: '#3a7ea1',
+		borderRadius: '10px',
+		position: 'relative',
+		left: '280px'
 	}
 });
 

@@ -14,7 +14,7 @@ const loginPageStyle = (theme) => ({
 		flexWrap: 'wrap'
 	},
 	title: {
-		color: '#8B4513',
+		color: '#3a7ea1',
 		fontWeight: 'bold',
 		fontSize: '30px',
 		marginTop: theme.spacing(5),
@@ -61,12 +61,7 @@ class Login extends Component {
 				window.localStorage.setItem('adminName', response.data.name);
 				window.localStorage.setItem('adminEmail', response.data.email);
 
-				// test if token is stored
-				const localStorageToken = window.localStorage.getItem('token');
-				console.log('token from local storage:', localStorageToken);
-
 				//direct user to staff page
-
 				this.props.history.push({
 					pathname: '/staff',
 					state: { name: response.data.name, id: response.data._id }
