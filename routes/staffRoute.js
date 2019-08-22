@@ -112,7 +112,8 @@ router.put('/:id', async (req, res, next) => {
 		});
 		//save staff into database
 		staff.save();
-		res.status(200).send(staff);
+		// res.status(200).send(staff);
+		res.end();
 	} catch (e) {
 		console.log(e);
 	}
