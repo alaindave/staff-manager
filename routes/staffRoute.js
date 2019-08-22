@@ -58,6 +58,33 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+router.post('/:staffID/daysOff/:requestID', async (req, res, next) => {
+	try {
+		console.log('request body:', req.body);
+
+		const { startDate, endDate, numberDays, id } = req.body;
+
+		//save days off request
+		const result = await addDaysOff(req.params.requestID, startDate, endDate, numberDays);
+
+		console.log('days off request', result);
+
+		const staff = await Staff.findById(req.params.staffID);
+		if (!staff) return res.status(404).send('Staff with given ID was not found');
+
+		const updatedDaysOff = staff.daysOff - numberDays;
+		staff.daysOff = updatedDaysOff;
+
+		staff.approvedBreaks.push(result._id);
+		//save staff into database
+		staff.save();
+		//send email
+		next();
+	} catch (e) {
+		console.log(e);
+	}
+});
+
 router.put('/:id', async (req, res, next) => {
 	//validate input
 	const error = validate(req.body);
@@ -86,33 +113,6 @@ router.put('/:id', async (req, res, next) => {
 		//save staff into database
 		staff.save();
 		res.status(200).send(staff);
-	} catch (e) {
-		console.log(e);
-	}
-});
-
-router.post('/:staffID/daysOff/:requestID', async (req, res, next) => {
-	try {
-		console.log('request body:', req.body);
-
-		const { startDate, endDate, numberDays, id } = req.body;
-
-		//save days off request
-		const result = await addDaysOff(req.params.requestID, startDate, endDate, numberDays);
-
-		console.log('days off request', result);
-
-		const staff = await Staff.findById(req.params.staffID);
-		if (!staff) return res.status(404).send('Staff with given ID was not found');
-
-		const updatedDaysOff = staff.daysOff - numberDays;
-		staff.daysOff = updatedDaysOff;
-
-		staff.approvedBreaks.push(result._id);
-		//save staff into database
-		staff.save();
-		//send email
-		next();
 	} catch (e) {
 		console.log(e);
 	}
