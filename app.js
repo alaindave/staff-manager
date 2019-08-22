@@ -10,8 +10,6 @@ const userRouter = require('./routes/userRoute');
 const loginRouter = require('./routes/loginRoute');
 const staffRouter = require('./routes/staffRoute');
 
-const sendEmail = require('./services/sendEmail');
-
 if (
 	!process.env.jwtKey ||
 	!process.env.secretAccessKey ||
@@ -35,8 +33,6 @@ app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use('/api/admin', userRouter);
 app.use('/api/auth', loginRouter);
 app.use('/api/staff', staffRouter);
-
-// app.use(sendEmail);
 
 require('./prod')(app);
 

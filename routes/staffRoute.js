@@ -5,6 +5,7 @@ const Staff = require('../models/staffModel');
 
 const { addStaff, addPic, getStaff, saveLetter, addDaysOff } = require('../db');
 const upload = require('../services/fileUpload');
+const sendEmail = require('../services/sendEmail');
 
 router.post('/', async (req, res, next) => {
 	try {
@@ -58,32 +59,36 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
-router.post('/:staffID/daysOff/:requestID', async (req, res, next) => {
-	try {
-		console.log('request body:', req.body);
+router.post(
+	'/:staffID/daysOff/:requestID',
+	async (req, res, next) => {
+		try {
+			console.log('request body:', req.body);
 
-		const { startDate, endDate, numberDays, id } = req.body;
+			const { startDate, endDate, numberDays, id } = req.body;
 
-		//save days off request
-		const result = await addDaysOff(req.params.requestID, startDate, endDate, numberDays);
+			//save days off request
+			const result = await addDaysOff(req.params.requestID, startDate, endDate, numberDays);
 
-		console.log('days off request', result);
+			console.log('days off request', result);
 
-		const staff = await Staff.findById(req.params.staffID);
-		if (!staff) return res.status(404).send('Staff with given ID was not found');
+			const staff = await Staff.findById(req.params.staffID);
+			if (!staff) return res.status(404).send('Staff with given ID was not found');
 
-		const updatedDaysOff = staff.daysOff - numberDays;
-		staff.daysOff = updatedDaysOff;
+			const updatedDaysOff = staff.daysOff - numberDays;
+			staff.daysOff = updatedDaysOff;
 
-		staff.approvedBreaks.push(result._id);
-		//save staff into database
-		staff.save();
-		//send email
-		next();
-	} catch (e) {
-		console.log(e);
-	}
-});
+			staff.approvedBreaks.push(result._id);
+			//save staff into database
+			staff.save();
+			//send email
+			next();
+		} catch (e) {
+			console.log(e);
+		}
+	},
+	sendEmail
+);
 
 router.put('/:id', async (req, res, next) => {
 	//validate input
