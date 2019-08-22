@@ -4,7 +4,7 @@ const Staff = require('./models/staffModel');
 const DaysOff = require('./models/daysOffModel');
 
 mongoose
-	.connect(process.env.MONGODB_URI || 'mongodb://localhost/afritandb', { useNewUrlParser: true })
+	.connect(process.env.MONGODB_URI || 'mongodb://localhost/staffmanagerdb', { useNewUrlParser: true })
 	.then(() => console.log('Connected to MongoDb...'))
 	.catch((err) => console.error('Could not connect to MongoDB', err));
 
