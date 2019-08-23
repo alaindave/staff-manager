@@ -103,7 +103,7 @@ class AddEmployee extends Component {
 				<form onSubmit={this.handleSubmit}>
 					<Grid container direction="column" alignItems="center">
 						<Grid item>
-							<Typography className={classes.title}>Nouveau employé</Typography>
+							<Typography className={classes.title}>New employee</Typography>
 						</Grid>
 
 						<Grid item>
