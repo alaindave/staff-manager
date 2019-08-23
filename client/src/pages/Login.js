@@ -98,7 +98,7 @@ class Login extends Component {
 								required
 								id="name"
 								name="name"
-								label="Utilisateur"
+								label="User name"
 								className={classes.textField}
 								value={name}
 								onChange={this.handleChange}
@@ -113,7 +113,7 @@ class Login extends Component {
 								required
 								id="password"
 								name="password"
-								label="Mot de passe"
+								label="Password"
 								className={classes.textField}
 								value={password}
 								onChange={this.handleChange}
