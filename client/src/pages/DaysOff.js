@@ -40,6 +40,10 @@ const daysOffStyle = (theme) => ({
 
 	loader: {
 		color: '#41806b'
+	},
+
+	confMessage: {
+		fontSize: '15px'
 	}
 });
 
@@ -232,6 +236,9 @@ class Daysoff extends Component {
 								Submit request
 							</StyledButton>
 						</Grid>
+						<span className={classes.confMessage}>
+							(A confirmation message will be sent to the email provided)
+						</span>
 					</Grid>
 				</form>
 			</div>

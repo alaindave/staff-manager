@@ -15,7 +15,7 @@ sendEmail = (req, res) => {
 	const mailOptions = {
 		from: process.env.email,
 		to: `${adminEmail}`,
-		subject: `Days off request of ${firstName} ${lastName} `,
+		subject: `Days off request for ${firstName} ${lastName} `,
 		text: ` Hello ${adminName},
         
     ${firstName} ${lastName} will be off from ${startDate} to ${endDate}.
